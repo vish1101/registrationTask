@@ -1,0 +1,118 @@
+  <div class="container">
+ 
+    <form [formGroup]="registrationForm" (ngSubmit)="OnSubmit()">
+      <div class="form-group">
+        <div class="col-sm-3 changeLang">
+          <select class="custom-select" class="form-control">
+            <option value="en">English</option>
+            <option value="mr">मराठी</option>
+          </select>
+        </div>
+     </div>
+      <div class="form-group">
+        <span class="headingUser">Type Of User</span>
+        <span *ngFor="let user of users" class="mx-4">
+          <label>
+            <input type="radio" name="user" id="user" class="mx-2" value="user">
+            {{user}}
+          </label>
+        </span>
+      </div>
+        <div class="form-group col-md-4 mt-2">
+            <select  class="form-control required" formControlName="State">
+              <option value="">state</option>
+               <option>Maharashtr</option>
+              <option>Goa</option>
+              <option>UttarPradesh</option>
+              <option>TamilNadu</option>
+              <option>Karnatak</option>
+            </select>
+            <span class="error text-danger" *ngIf="getInputState.touched && getInputState.invalid">
+              please select Your state
+            </span>
+        </div>
+        <div class="form-group col-md-4">
+          <select required class="form-control" formControlName="District">
+            <option value="" disabled selected>District.</option>
+            <option>Nanded</option>
+            <option>Bid</option>
+            <option>Jalna</option>
+            <option>Aurangabad</option>
+          </select>
+          <span class="error text-danger" *ngIf="inputDistrict.touched && inputDistrict.invalid">
+            pls select your district
+          </span>
+        </div>
+      <div class="form-group col-md-4">
+        <select required class="form-control" formControlName="Taluka">
+          <option value="" disabled selected>Taluka</option>
+          <option>Basmath</option>
+          <option>Aundha</option>
+          <option>Javla</option>
+          <option>Hingoli</option>
+          <option>SenGao</option>
+        </select>
+        <span class="error text-danger" *ngIf="inputTaluka.touched && inputTaluka.invalid">
+          plz select Your Taluka
+        </span>
+      </div>
+      <div class="form-group col-md-4">
+        <select required class="form-control" formControlName="Village">
+          <option value="" selected disabled hidden>State</option>
+          <option>Basmath</option>
+          <option>Parli</option>
+          <option>Javla</option>
+          <option>Sirsam</option>
+          <option>KhudNapur</option>
+        </select>
+        <span class="error text-danger" *ngIf="getinputVillage.touched && getinputVillage.invalid">
+          plz select Your Village
+        </span>
+      </div>
+      <div class="form-group col-md-4">
+        <input type="text" name="userName"formControlName="userName" placeholder="userName" class="form-control">
+        <span class="error text-danger" *ngIf="getuserNameControl.touched && getuserNameControl.invalid">
+          UserName is Required
+        </span><br>
+        <span class="error text-danger" *ngIf="getuserNameControl.dirty && getuserNameControl.getError('minlength')!=null">
+          UserName Should at least 2 Character
+        </span>
+        <span class="error text-danger" *ngIf="getuserNameControl.dirty && getuserNameControl.getError('canNotAllowSpace') != null">
+           space is not Allowed
+        </span>
+      </div>
+      <div class="form-group col-md-4">
+        <input type="tel" id="phone" name="phone"class="form-control"placeholder="Mobile Number" formControlName="MobileNumber">
+        <span class="error text-danger" *ngIf="getMobileNocontrol.touched && getMobileNocontrol.invalid">
+          Mobile Number is Required
+        </span>
+        <span class="error text-danger"  *ngIf="getMobileNocontrol.getError('pattern')!= null  && getMobileNocontrol.invalid">
+          please Enter 10 degit Mobile Number
+        </span>
+      </div>
+      <div class="form-group col-md-4">
+        <input type="email" name="email"  placeholder="Email Id" class="form-control" formControlName="email">
+        <span class="error text-danger" *ngIf="getemail.touched && getemail.invalid">
+          *Email is Required
+        </span><br>
+        <span  class="error text-danger"*ngIf="getemail.dirty && getemail.getError('emailError') != null">
+          this Email is Already exist
+        </span>
+      </div>
+      <div class="form-group col-md-4 offset-sm-2">
+        <input type="file"  name ="uploadDocs"class="form-control-file"  placeholder="Upload Documents"formControlName="uploadDocs">
+      </div>
+      <div class="form-group col-md-4 offset-sm-2">
+        <button class="btn btn-primary" type="submit" [disabled]="registrationForm.invalid">submit</button>
+      </div>
+    </form>
+    <div class="col-md-6 successreg">
+      <div class="alert alert-success alert-dismissible fade show" role="alert" *ngIf="message">
+        <strong text-center>registration Completed Successfully</strong> 
+        <button type="button"(click)="Closemsg()" class="close" data-dismiss="alert" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+    </div>
+  </div>
+

@@ -1,0 +1,60 @@
+<div class="text-left">
+    <form [formGroup]="casesForm" (ngSubmit)="onSubmit()">
+        <div class="row mt-4 mb-4">
+            <div class="col-sm-6">
+                   <div class="form-group">
+                    <input type="text" 
+                        placeholder ="Enter judjement Orderno" class="form-control" formControlName="judgmentNO">
+                        <span class="error text-danger" *ngIf="getJudgementNOControl.touched && getJudgementNOControl.invalid">
+                            This Field Is *required
+                        </span>
+                   </div>
+             </div>
+                <div class="col-sm-6">
+                    <div class="form-group">
+                        <input type="text" 
+                        placeholder="Enter judjement Date" class="form-control" formControlName="judgmentdate">
+                        <span class="error text-danger" *ngIf="getJudgementDateControl.touched && getJudgementDateControl.invalid">
+                            This Field Is *required
+                        </span>
+                    </div>
+                </div>
+            <p>
+                <strong>
+                    Capturing of data from other department through web service on the basis of judgement order and date
+                </strong>
+            </p>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <input type="text"  class="form-control" placeholder="Applicant Details" formControlName="applicantDetails">
+                <span class="error text-danger" *ngIf="applicantDetails.touched && applicantDetails.invalid">
+                    This Field Is *required
+                </span>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <input type="text"
+                  class="form-control" placeholder="Respondent Details"formControlName="respondentDetails">
+                <span class="error text-danger" *ngIf="respondentDetails.touched && respondentDetails.invalid">
+                    This Field Is *required
+                </span>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <input type="file" class="form-control-file"  placeholder="upload Documents" formControlName="uploadDocuments">
+                <span class="error text-danger" *ngIf="uploadDocuments.touched  && uploadDocuments.invalid">
+                    plz upload The Neccesary Documents
+                </span>
+              </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary text-center submit-btn " 
+                [disabled]="casesForm.invalid">submit</button>
+              </div>
+        </div>
+    </form>
+</div>

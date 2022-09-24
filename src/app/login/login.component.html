@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="row">
+        <form #loginform="ngForm" (ngSubmit)="OnLogin(loginform)">
+            <div class="form-group">
+                <input type="text" name="login" #login='ngModel'  placeholder="Login" class="form-control" ngModel required>
+                <span class="error text-danger" *ngIf="login.touched && login.invalid">
+                    *this field is required
+                </span>
+            </div>
+            <div class="form-group  p-2">
+                 <input type="password" name="password" #password="ngModel" placeholder="Password" class="form-control" ngModel required minlength="5" maxlength="8">
+                 <span class="error text-danger" *ngIf="password.touched && password.invalid">
+                    *this is required field
+                 </span>
+                 <span class="error text-danger" *ngIf="password.dirty && password.invalid">
+                    password should be atleast  5 Character and Maximum 8 Character
+                 </span>
+            </div>
+            <div class="form-group  p-2">
+                <input type="text" name="captcha" #capcha="ngModel" placeholder="Captcha/Recaptcha google" class="form-control"ngModel required>
+                <span class="error text-danger" *ngIf="capcha.touched && capcha.invalid">
+                    this Field is Required
+                </span>
+           </div>
+            <div class="form-group mt-2 p-4">
+                <button class="btn btn-primary" [disabled]="loginform.invalid">Login</button>
+            </div>
+        </form>
+    </div>
+</div>

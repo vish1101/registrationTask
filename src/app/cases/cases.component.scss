@@ -1,0 +1,15 @@
+.text-left{
+    text-align:left;
+}
+p{
+    font-weight: 400;
+    margin-bottom: 50px;
+}
+.submit-btn{
+    position: absolute;
+    bottom: -224px;
+    left:358px    
+}
+input.ng-touched.ng-invalid{
+border: 2px solid red;
+}
